@@ -1,36 +1,26 @@
-from OpenGL.GL import *
-import glfw
-from utils.image import generate_image
-from utils.init import init
+"""Point module"""
+
+from OpenGL.raw.GL.VERSION.GL_1_0 import glVertex2f, glEnd, glPointSize
+from OpenGL.GL import glBegin, GL_POINTS, GL_POINT_SMOOTH
+
 from primitive.color import Color
 
 class Point:
-    def __init__(self, x: float, y: float, color: Color, width: float = 1):
+    """Point class"""
+
+    def __init__(self, x: float, y: float, color: Color = Color(0, 0, 0), width: float = 1):
         self.x = x
         self.y = y
         self.color = color
         self.width = width
 
     def draw(self):
-        glLineWidth(3.0)
-        glBegin(GL_POINT)
+        """draws a point"""
+        self.color.set()
+
+        
+        glPointSize(self.width)
+        glBegin(GL_POINT_SMOOTH)
         glVertex2f(self.x, self.y)
         glEnd()
 
-window = init()
-
-glfw.poll_events()
-glClearColor(1, 1, 1, 1)
-glClear(GL_COLOR_BUFFER_BIT)
-
-p = Point(0, 0)
-p.draw()
-
-glfw.poll_events()
-
-#get an image 
-generate_image("test", "png")
-
-#destroy and close glfw window
-glfw.destroy_window(window)
-glfw.terminate()

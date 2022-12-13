@@ -2,6 +2,7 @@ from PIL import ImageOps, Image
 from OpenGL.GL import *
 from utils.constants import WIDTH, HEIGHT
 
+
 def generate_image(image_name: str, extension: str):
     """
     generates an image takes the image file name
@@ -16,4 +17,4 @@ def generate_image(image_name: str, extension: str):
     image = ImageOps.flip(image)
 
     # save the image
-    image.save(image_name + "." + extension.lower, extension.capitalize())
+    image.save(image_name + "." + extension.lower(), extension.capitalize())

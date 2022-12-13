@@ -2,6 +2,7 @@ import glfw
 
 from utils.constants import WIDTH, HEIGHT, TITLE
 
+
 def init():
     """
     Start a new glfw window to draw
